@@ -34,7 +34,6 @@ def nextTurn(row, column): #alternates between player 1 and 2 until either one o
                 label.config(text=(players[1]+" is victorious"))
             elif checkWin() == "Tie":
                 label.config(text=("Draw!!"))
-
 def checkWin(): #checks if win conditions have been met, also adds colors to tiles that've been clicked on
     for row in range(3): #checks for 3 across
         if buttons[row][0]['text'] == buttons[row][1]['text'] == buttons[row][2]['text'] != "":
@@ -78,7 +77,7 @@ def emptySpace(): #changes an empty space when clicked on to either x or o
         return False
     else:
         return True #means there is a winner
-def newGame():
+def newGame(): #clears the window before or after the game concludes and resets the game
     global player
 
     player = random.choice(players)
@@ -108,5 +107,4 @@ for row in range(3):
         buttons[row][column] = Button(frame,text="",font=('impact', 30,), width=6, height=3, 
                                     command= lambda row=row, column=column: nextTurn(row, column))
         buttons[row][column].grid(row=row, column=column)
-
 window.mainloop()
